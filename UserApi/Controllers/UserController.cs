@@ -64,7 +64,19 @@ namespace UserApi.Controllers
                 return StatusCode(200, new { message = "A törlés sikeres" });
             }
         }
+        [HttpGet("{id}")]
+        public ActionResult<User> GetById(Guid id)
+        {
+            using (var context = new UserDbContext())
+            {
+                var user = context.NewUsers.FirstOrDefault(x => x.Id == id);
+                if (user == null)
+                {
+                    return NotFound(new { message = "Nem található" });
+                }
 
-
+                return StatusCode(200, user);
+            }
+        }
     }
 }
