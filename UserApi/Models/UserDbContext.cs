@@ -21,6 +21,6 @@ namespace UserApi.Models
                 optionsBuilder.UseMySQL(conn);
             }
         }
-        public DbSet<User> NewUsers { get; set; } = null;
+        public DbSet<User> NewUsers { get; set; } = null!;
     }
 }
